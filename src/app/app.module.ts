@@ -5,6 +5,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material/material.module';
 import { LoginComponent } from './user/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -15,7 +21,8 @@ import { LoginComponent } from './user/login/login.component';
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

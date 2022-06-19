@@ -1,1 +1,15 @@
-
+.create-account {
+  margin-left: 15px;
+  color: #1b5e20;
+  font-size: 12px;
+  text-decoration: underline;
+}
+.alien-icon {
+  background-image: url('../../../assets/icons/alien.png');
+  width: 24px;
+  height: 24px;
+  top: 0;
+  left: 5px;
+  position: absolute;
+  background-size: contain;
+}

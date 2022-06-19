@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,8 +10,9 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  hide = true;
-
+  hidePass = true;
+  isLoginPage = true;
+  responseData: any;
   loginForm = new FormGroup({
     'username': new FormControl('', Validators.required),
     'password': new FormControl('', [
@@ -19,13 +22,31 @@ export class LoginComponent implements OnInit {
       Validators.pattern('(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=[^0-9]*[0-9]).{6,}')])
   })
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(loginFrom: FormGroup) {
     console.log(loginFrom);
+    if(this.isLoginPage) {
+      this.signIn()
+    } else {
+      this.signUp();
+    }
+  }
+
+  signIn() {
+    this.auth.proceedLogin(this.loginForm.value);
+  }
+
+  signUp() {
+    console.log('sign up');
+  }
+
+  switch() {
+    this.isLoginPage = !this.isLoginPage;
+    this.loginForm.reset();
   }
 
 }
