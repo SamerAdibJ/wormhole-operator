@@ -37,3 +37,64 @@ $Wormhole-operator-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+app-root {
+  display: flex;
+  height: 100% !important;
+  background-image: url(./../src/assets/backgound-images/space.jpg);
+  background-size: cover;
+}
+
+@import '~@angular/material/theming';
+@include mat-core();
+  $outline-color-hover: red;
+  $primary: mat-palette($mat-green,900);
+  $accent: mat-palette($mat-teal,200);
+
+  $theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);
+
+/* Border */
+
+mat-card {
+  background-color: black !important;
+  mat-card-title{
+    color: #1b5e20;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #1b5e20;
+  }
+}
+mat-form-field {
+  .mat-form-field-flex {
+    background-color: grey;
+  }
+  &.mat-focused {
+    .mat-form-field-label {
+        color: #1b5e20 !important;
+        font-weight: bold;
+    }
+    .mat-form-field-ripple {
+        background-color: #1b5e20 !important;
+    }
+  }
+  .mat-form-field-label,.mat-form-field-label.mat-focused,
+  .mat-form-field.mat-focused.matform-field-should-float {
+      color: #1b5e20 !important;
+  }
+  .mat-form-field-underline, .mat-form-field-underline.mat-focused {
+      background-color: #1b5e20 !important;
+  }
+  .mat-input-element::placeholder {
+    color: grey;
+    opacity: 0.5;
+  }
+  .mat-input-element {
+    color: white;
+    padding: 5px 0;
+  }
+}
+
+  //   .mat-form-field-label {
+  //     color: green;
+  // }
