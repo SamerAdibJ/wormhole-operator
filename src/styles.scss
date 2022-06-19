@@ -47,7 +47,6 @@ app-root {
 
 @import '~@angular/material/theming';
 @include mat-core();
-  $outline-color-hover: red;
   $primary: mat-palette($mat-green,900);
   $accent: mat-palette($mat-teal,200);
 
@@ -72,12 +71,10 @@ mat-form-field {
   &.mat-focused {
     .mat-form-field-label {
         color: #1b5e20 !important;
-        font-weight: bold;
     }
-    .mat-form-field-ripple {
-        background-color: #1b5e20 !important;
-    }
+
   }
+
   .mat-form-field-label,.mat-form-field-label.mat-focused,
   .mat-form-field.mat-focused.matform-field-should-float {
       color: #1b5e20 !important;
@@ -95,6 +92,22 @@ mat-form-field {
   }
 }
 
-  //   .mat-form-field-label {
-  //     color: green;
-  // }
+input.ng-invalid.ng-touched {
+  caret-color: white !important;
+}
+.mat-form-field-invalid .mat-form-field-ripple, .mat-form-field-invalid .mat-form-field-ripple.mat-accent{
+  background-color: firebrick!important;
+}
+.mat-button-disabled {
+  opacity: 0.5 !important;
+  color: white !important;
+  background-color: #1b5e20 !important;
+}
+
+.mat-hint{
+  color: white;
+}
+
+.mat-icon-button {
+  color: #1b5e20;
+}
