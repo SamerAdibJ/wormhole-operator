@@ -14,19 +14,19 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   proceedLogin(userCred: any) {
-    this.subscription = this.http.get(this.operatorUrl).subscribe(
+    return this.http.post(this.operatorUrl, userCred).subscribe(
       responseData => {
+        console.log('responseData');
         console.log(responseData);
         const cred = responseData[0];
-        if(cred.username === userCred.username &&
-           cred.password === userCred.password) {
-
+        if(cred.username == userCred.username &&
+           cred.password == userCred.password) {
           // this.router.navigate(['main-page']);
+          alert('login')
 
         } else {
           alert('wrong credentials');
         }
     });
-    this.subscription.unsubscribe();
   }
 }

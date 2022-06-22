@@ -6,6 +6,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material/material.module';
 import { LoginComponent } from './user/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './shared/component/header/header.component';
+import { RouterModule } from '@angular/router';
+import { RoutingModule } from './routing/routing.module';
 
 
 
@@ -15,14 +18,17 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
