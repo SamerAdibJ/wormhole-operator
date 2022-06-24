@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from 'src/app/service/auth.service';
+import { UserToken } from '../user-token.model';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +14,17 @@ export class LoginComponent implements OnInit {
 
   hidePass = true;
   isLoginPage = true;
-  responseData: any;
+  isError = false;
+  inProgress = false;
+
+  message: string;
+
   loginForm = new FormGroup({
-    'username': new FormControl('', Validators.required),
+
+    'email': new FormControl('', [
+      Validators.email,
+      Validators.required]),
+
     'password': new FormControl('', [
       Validators.required,
       Validators.minLength(6),
@@ -22,31 +32,66 @@ export class LoginComponent implements OnInit {
       Validators.pattern('(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=[^0-9]*[0-9]).{6,}')])
   })
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(loginFrom: FormGroup) {
-    console.log(loginFrom);
+  onSubmit(loginForm: FormGroup) {
+    if (!loginForm.valid) {
+      //adding extra validation to the form
+      return;
+    }
+
+    const email =  loginForm.value.email;
+    const password = loginForm.value.password;
+
+    this.inProgress = true;
+
     if(this.isLoginPage) {
-      this.signIn()
+
+      this.auth.signIn(email, password).subscribe({
+        next: authResponse => {
+          console.log('authResponse');
+          console.log(authResponse);
+          this.inProgress = false;
+          this.auth.initializeToken(authResponse['idToken'], +authResponse['expiresIn'])
+          this.router.navigate(['']);
+        },
+        error: e => {
+          this.message = e.error.error.message;
+          this.isError = true;
+          this.inProgress = false;
+        }
+      });
+
     } else {
-      this.signUp();
+
+      this.auth.signUp(email, password).subscribe({
+        next: (d) => {
+          console.log(d);
+
+          this.message = 'Account Created!';
+          this.inProgress = false;
+          this.isError = false;
+        },
+        error: e => {
+          this.message = e.error.error.message;
+          this.inProgress = false;
+          this.isError = true;
+        }
+      })
     }
   }
 
-  signIn() {
-    this.auth.proceedLogin(this.loginForm.value);
-  }
-
-  signUp() {
-    console.log('sign up');
-  }
-
-  switch() {
+  switch() { //switch between sign in and sign up
     this.isLoginPage = !this.isLoginPage;
-    this.loginForm.reset();
+    if(!this.message) {
+      this.loginForm.reset();
+    }
   }
+
+
+
 
 }

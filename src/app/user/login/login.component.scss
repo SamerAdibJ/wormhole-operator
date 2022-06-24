@@ -13,3 +13,16 @@
   position: absolute;
   background-size: contain;
 }
+.notification {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  right: 0;
+  color: white;
+  margin: auto;
+  text-align: center;
+  background-color: black;
+  padding: 5px 0;
+  max-width: 75%;
+  color: #1b5e20;
+}
