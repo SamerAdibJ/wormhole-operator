@@ -24,7 +24,6 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | Observable<boolean | UrlTree> {
     return this.authService.userToken.pipe(
-      take(1),
       map(user => {
         console.log(user);
 

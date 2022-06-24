@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/component/header/header.component';
 import { RouterModule } from '@angular/router';
 import { RoutingModule } from './routing/routing.module';
+import { WormholeComponent } from './wormhole/wormhole.component';
 
 
 
@@ -19,7 +20,8 @@ import { RoutingModule } from './routing/routing.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    WormholeComponent
   ],
   imports: [
     BrowserModule,

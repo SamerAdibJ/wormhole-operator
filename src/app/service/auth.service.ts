@@ -68,13 +68,16 @@ export class AuthService {
 
   autoLogin() {
     const userToken: { token: string, tokenExpirationDate: string} = JSON.parse(localStorage.getItem('userToken'));
+    console.log('userToken');
+    console.log(userToken);
     if (!userToken) {
       return;
     }
 
     const loadedUserToken = new UserToken(userToken.token, new Date(userToken.tokenExpirationDate));
 
-    if (loadedUserToken.token) {
+
+    if (loadedUserToken.userToken) {
       this.userToken.next(loadedUserToken);
 
       //calculating the expiration date manually

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserToken } from '../user-token.model';
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   isLoginPage = true;
   isError = false;
   inProgress = false;
-
+  returnUrl: string;
   message: string;
 
   loginForm = new FormGroup({
@@ -32,9 +32,10 @@ export class LoginComponent implements OnInit {
       Validators.pattern('(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=[^0-9]*[0-9]).{6,}')])
   })
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   onSubmit(loginForm: FormGroup) {
