@@ -43,6 +43,24 @@ app-root {
   height: 100% !important;
   background-image: url(./../src/assets/backgound-images/space.jpg);
   background-size: cover;
+  flex-direction: column;
+  app-login, app-wormhole {
+    height: calc(100% - 100px);
+  }
+  app-wormhole {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    mat-card {
+      height: 95%;
+      background-color: transparent !important;
+      border: 1px solid #1b5e20;
+      box-shadow: none !important;
+      mat-card-title {
+        font-size: 20px !important;
+      }
+    }
+  }
 }
 
 @import '~@angular/material/theming';

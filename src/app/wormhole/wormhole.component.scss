@@ -1,0 +1,27 @@
+.wormhole-wrapper {
+  width: 100%;
+  height: 95%;
+  background-color: transparent !important;
+
+}
+
+mat-card {
+  height: 100%;
+  background-color: transparent !important;
+  border: none;
+  mat-card-title {
+    text-align: center;
+    border: none;
+    margin-bottom: 0;
+    padding: 10px 0;
+
+  }
+  mat-card-content {
+    height: 100%;
+    margin-bottom: 0;
+  }
+}
+
+app-aliens-list {
+  height: 100%;
+}
