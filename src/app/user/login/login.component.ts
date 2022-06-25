@@ -53,8 +53,6 @@ export class LoginComponent implements OnInit {
 
       this.auth.signIn(email, password).subscribe({
         next: authResponse => {
-          console.log('authResponse');
-          console.log(authResponse);
           this.inProgress = false;
           this.auth.initializeToken(authResponse['idToken'], +authResponse['expiresIn'])
           this.router.navigate(['']);
@@ -69,9 +67,7 @@ export class LoginComponent implements OnInit {
     } else {
 
       this.auth.signUp(email, password).subscribe({
-        next: (d) => {
-          console.log(d);
-
+        next: () => {
           this.message = 'Account Created!';
           this.inProgress = false;
           this.isError = false;
@@ -91,8 +87,4 @@ export class LoginComponent implements OnInit {
       this.loginForm.reset();
     }
   }
-
-
-
-
 }

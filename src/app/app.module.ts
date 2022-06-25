@@ -10,6 +10,12 @@ import { HeaderComponent } from './shared/component/header/header.component';
 import { RouterModule } from '@angular/router';
 import { RoutingModule } from './routing/routing.module';
 import { WormholeComponent } from './wormhole/wormhole.component';
+import { AliensListComponent } from './wormhole/aliens-list/aliens-list.component';
+import { AlienComponent } from './wormhole/aliens-list/alien/alien.component';
+import { TravelersListComponent } from './wormhole/travelers-list/travelers-list.component';
+import { TravelerComponent } from './wormhole/travelers-list/traveler/traveler.component';
+import { TripsListComponent } from './wormhole/trips-list/trips-list.component';
+import { TripComponent } from './wormhole/trips-list/trip/trip.component';
 
 
 
@@ -21,7 +27,13 @@ import { WormholeComponent } from './wormhole/wormhole.component';
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    WormholeComponent
+    WormholeComponent,
+    AliensListComponent,
+    AlienComponent,
+    TravelersListComponent,
+    TravelerComponent,
+    TripsListComponent,
+    TripComponent
   ],
   imports: [
     BrowserModule,

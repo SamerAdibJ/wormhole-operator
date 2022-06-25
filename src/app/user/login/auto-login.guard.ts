@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/service/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class AutoLoginGuard implements CanActivate {
+
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
