@@ -1,6 +1,8 @@
 <mat-card>
   <mat-card-title>Travelers</mat-card-title>
     <scrollbar class="scrollbar">
-      <app-traveler></app-traveler>
+      <div *ngFor="let Traveler of Travelers">
+        <app-traveler [traveler]="Traveler"></app-traveler>
+      </div>
     </scrollbar>
 </mat-card>

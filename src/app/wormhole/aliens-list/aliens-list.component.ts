@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/service/data.service';
+import { Alien } from './alien/alien.model';
 
 @Component({
   selector: 'app-aliens-list',
@@ -7,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AliensListComponent implements OnInit {
 
-  items = [1,2,3,4,5,6,7,8,9];
-  constructor() { }
+  Aliens: Alien[];
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.dataService.getAliens().subscribe(
+      aliensData => {
+        this.Aliens = aliensData;
+      }
+    )
   }
 
 }

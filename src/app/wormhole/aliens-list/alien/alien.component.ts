@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-alien',
@@ -7,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlienComponent implements OnInit {
   panelOpenState = false;
-  request = true;
-  item;
+  request = false;
+
+  @Input() alien;
+
+
   constructor() { }
 
   ngOnInit(): void {
+
+    if(this.alien.id == '1' || this.alien.id == '5' || this.alien.id == '7') {
+      console.log(this.alien);
+      this.request = true;
+    }
+    // this.alien.id;
   }
 }

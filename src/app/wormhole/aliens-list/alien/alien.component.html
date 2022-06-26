@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="request">
   <div class="col-12">
     <div class="card-wrapper">
       <mat-accordion>
@@ -7,7 +7,7 @@
 
           <mat-expansion-panel-header>
             <mat-panel-title>
-              Arnamisar
+              {{alien.name | titlecase}}
             </mat-panel-title>
           </mat-expansion-panel-header>
 
@@ -15,17 +15,17 @@
 
             <mat-list-item>
               <div mat-line>ID:</div>
-              <div mat-line>1254</div>
+              <div mat-line>{{alien.id}}</div>
             </mat-list-item>
 
             <mat-list-item>
               <div mat-line>Current Position:</div>
-              <div mat-line>35</div>
+              <div mat-line>{{alien.currentPosition}}</div>
             </mat-list-item>
 
             <mat-list-item>
               <div mat-line>Completed Trips:</div>
-              <div mat-line>4</div>
+              <div mat-line>-</div>
             </mat-list-item>
 
           </mat-list>
@@ -33,13 +33,13 @@
         </mat-expansion-panel>
 
       </mat-accordion>
-      <div class="connection-panel">
+      <div *ngIf="request" class="connection-panel" >
 
-        <mat-icon class="tooltip-button" matTooltip="Accept" color="primary">arrow_forward_ios</mat-icon>
-
-        <mat-progress-bar *ngIf="request" mode="indeterminate" color="primary" ></mat-progress-bar>
 
         <mat-icon class="tooltip-button" matTooltip="Decline" color="primary">close</mat-icon>
+        <mat-progress-bar  mode="indeterminate" color="primary" ></mat-progress-bar>
+        <mat-icon class="tooltip-button" matTooltip="Accept" color="primary">arrow_forward_ios</mat-icon>
+
 
       </div>
       <mat-accordion *ngIf="request">

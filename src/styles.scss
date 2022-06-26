@@ -158,16 +158,16 @@ app-root {
               text-align: center;
               color: white;
               &[matTooltip="Accept"]{
-                top: -20px;
-                left: 0;
-                right: auto;
-                bottom: auto;
-              }
-              &[matTooltip="Decline"]{
-                top: auto;
+                bottom: -20px;
                 left: auto;
                 right: 0;
-                bottom: -20px;
+                top: auto;
+              }
+              &[matTooltip="Decline"]{
+                bottom: auto;
+                left: 0;
+                right: auto;
+                top: -20px;
               }
             }
           }
