@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TravelerComponent implements OnInit {
 
+  request = true;
   constructor() { }
 
   ngOnInit(): void {

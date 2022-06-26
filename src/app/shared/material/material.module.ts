@@ -10,6 +10,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
+
+
 
 @NgModule({
   declarations: [],
@@ -23,7 +27,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatToolbarModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatExpansionModule,
+    MatListModule
   ]
 })
 export class MaterialModule { }

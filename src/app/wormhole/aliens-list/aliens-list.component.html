@@ -1,6 +1,8 @@
 <mat-card>
   <mat-card-title>Aliens</mat-card-title>
-  <mat-card-content>
-    <app-alien></app-alien>
-  </mat-card-content>
+    <scrollbar class="scrollbar">
+      <div *ngFor="let item of items">
+        <app-alien item="item"></app-alien>
+      </div>
+    </scrollbar>
 </mat-card>

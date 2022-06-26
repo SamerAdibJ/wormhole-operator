@@ -16,6 +16,8 @@ import { TravelersListComponent } from './wormhole/travelers-list/travelers-list
 import { TravelerComponent } from './wormhole/travelers-list/traveler/traveler.component';
 import { TripsListComponent } from './wormhole/trips-list/trips-list.component';
 import { TripComponent } from './wormhole/trips-list/trip/trip.component';
+import { NG_EVENT_PLUGINS } from '@tinkoff/ng-event-plugins';
+import { ScrollbarModule } from './shared/component/scrollbar/scrollbar.module';
 
 
 
@@ -42,9 +44,10 @@ import { TripComponent } from './wormhole/trips-list/trip/trip.component';
     MaterialModule,
     HttpClientModule,
     RouterModule,
-    RoutingModule
+    RoutingModule,
+    ScrollbarModule
   ],
-  providers: [],
+  providers: NG_EVENT_PLUGINS,
   bootstrap: [AppComponent]
 })
 export class AppModule { }

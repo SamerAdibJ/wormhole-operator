@@ -1,1 +1,54 @@
-<p>traveler works!</p>
+<div class="row">
+  <div class="col-12">
+    <div class="card-wrapper">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Destination: <span>145326</span> Wh.
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list>
+            <mat-list-item>
+              <div mat-line>ID:</div>
+              <div mat-line>1254</div>
+            </mat-list-item>
+            <mat-list-item>
+              <div mat-line>Current Position:</div>
+              <div mat-line>35</div>
+            </mat-list-item>
+            <mat-list-item>
+              <div mat-line>Completed Trips:</div>
+              <div mat-line>4</div>
+            </mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-progress-bar *ngIf="request" mode="query" color="primary" class="w-25"></mat-progress-bar>
+      <mat-accordion *ngIf="request">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Destination: <span>145326</span> Wh.
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list>
+            <mat-list-item>
+              <div mat-line>ID:</div>
+              <div mat-line>1254</div>
+            </mat-list-item>
+            <mat-list-item>
+              <div mat-line>Destination:</div>
+              <div mat-line>35</div>
+            </mat-list-item>
+            <mat-list-item>
+              <div mat-line>Completed Trips:</div>
+              <div mat-line>4</div>
+            </mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>
+

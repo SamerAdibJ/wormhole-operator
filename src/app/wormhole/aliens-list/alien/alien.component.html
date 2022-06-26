@@ -1,66 +1,81 @@
 <div class="row">
-  <div class="col-6">
-    <mat-card>
-      <mat-card-content>
-        Name: <span>Asiriator</span>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="col-6">
-    <mat-card>
-      <mat-card-content>
-        Destination: <span>123548 Wh</span>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
+  <div class="col-12">
+    <div class="card-wrapper">
+      <mat-accordion>
 
-<div class="row">
-  <div class="col-6">
-    <mat-card>
-      <mat-card-content>
-        Name: <span>Asiriator</span>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="col-6">
-    <mat-card>
-      <mat-card-content>
-        Destination: <span>123548 Wh</span>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
-<div class="row">
-  <div class="col-6">
-    <mat-card>
-      <mat-card-content>
-        Name: <span>Asiriator</span>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="col-6">
-    <mat-card>
-      <mat-card-content>
-        Destination: <span>123548 Wh</span>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
-<div class="row">
-  <div class="col-6">
-    <mat-card>
-      <mat-card-content>
-        Name: <span>Asiriator</span>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="col-6">
-    <mat-card>
-      <mat-card-content>
-        Destination: <span>123548 Wh</span>
-      </mat-card-content>
-    </mat-card>
+        <mat-expansion-panel collapsedHeight="40">
+
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Arnamisar
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-list>
+
+            <mat-list-item>
+              <div mat-line>ID:</div>
+              <div mat-line>1254</div>
+            </mat-list-item>
+
+            <mat-list-item>
+              <div mat-line>Current Position:</div>
+              <div mat-line>35</div>
+            </mat-list-item>
+
+            <mat-list-item>
+              <div mat-line>Completed Trips:</div>
+              <div mat-line>4</div>
+            </mat-list-item>
+
+          </mat-list>
+
+        </mat-expansion-panel>
+
+      </mat-accordion>
+      <div class="connection-panel">
+
+        <mat-icon class="tooltip-button" matTooltip="Accept" color="primary">arrow_forward_ios</mat-icon>
+
+        <mat-progress-bar *ngIf="request" mode="indeterminate" color="primary" ></mat-progress-bar>
+
+        <mat-icon class="tooltip-button" matTooltip="Decline" color="primary">close</mat-icon>
+
+      </div>
+      <mat-accordion *ngIf="request">
+
+        <mat-expansion-panel>
+
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Destination request:<span>16</span>Wh.
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-list>
+            <mat-list-item>
+              <div mat-line>Cost:</div>
+              <div mat-line>265</div>
+            </mat-list-item>
+            <mat-list-item>
+              <div mat-line>Trip duration:</div>
+              <div mat-line>
+                <span>42</span>
+                <span>
+                  <button
+                    class="tooltip-button"
+                    matTooltip="Time in Earth Seconds">
+                    ES
+                  </button>
+                </span>
+              </div>
+            </mat-list-item>
+          </mat-list>
+
+        </mat-expansion-panel>
+
+      </mat-accordion>
+    </div>
   </div>
 </div>
 

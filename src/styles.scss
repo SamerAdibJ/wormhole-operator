@@ -59,6 +59,120 @@ app-root {
       mat-card-title {
         font-size: 20px !important;
       }
+      .scrollbar {
+        height: 80%;
+        overflow-x: hidden;
+        .card-wrapper {
+          padding: 5px 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          mat-accordion {
+            width: 100%;
+            padding: 5px;
+            cursor: pointer;
+            color: #1b5e20;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.6) !important;
+            border: 1px solid #1b5e20;
+            border-radius: 4px;
+
+            mat-expansion-panel {
+              background-color: transparent;
+              box-shadow: none;
+              mat-expansion-panel-header {
+                background-color: transparent;
+                padding: 0 5px;
+                height: auto!important;
+                mat-panel-title {
+                  color: #1b5e20;
+                }
+              }
+              .mat-expansion-panel-body {
+                padding: 3px 5px;
+                mat-list {
+                  border-top: 1px solid #1b5e20;
+                }
+              }
+            }
+            mat-list {
+              mat-list-item {
+                height: auto !important;
+                .mat-list-text {
+                  color: #1b5e20;
+                  font-size: 12px;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  .mat-list-item-content {
+                    padding: 0 10px;
+                  }
+                }
+              }
+            }
+          }
+          &:hover {
+            mat-accordion {
+              color: white;
+              background-color: #1b5e20 !important;
+              mat-panel-title {
+                color: white;
+              }
+              .mat-expansion-indicator::after {
+                color: white;
+              }
+              .mat-list-text {
+                color: white;
+              }
+              .mat-expansion-panel-body {
+                mat-list {
+                  border-color: white;
+                }
+              }
+            }
+            .connection-panel {
+              text-align: center;
+              mat-icon {
+                display: block;
+              }
+            }
+          }
+          .mat-progress-bar-buffer {
+            background-color: transparent;
+          }
+          .mat-progress-bar-fill::after {
+            border-radius: 50%;
+          }
+          .mat-progress-bar-background {
+            fill: black
+          }
+          .connection-panel {
+            width: 25%;
+            text-align: center;
+            position: relative;
+            mat-icon {
+              position: absolute;
+              display: none;
+              font-size: 18px;
+              height: 18px;
+              cursor: pointer;
+              text-align: center;
+              color: white;
+              &[matTooltip="Accept"]{
+                top: -20px;
+                left: 0;
+                right: auto;
+                bottom: auto;
+              }
+              &[matTooltip="Decline"]{
+                top: auto;
+                left: auto;
+                right: 0;
+                bottom: -20px;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
