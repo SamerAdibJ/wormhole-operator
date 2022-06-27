@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { from, Observable, Subject, Subscription } from 'rxjs';
 import { DataService } from 'src/app/service/data.service';
+import { SimulatorService } from 'src/app/service/simulator.service';
 import { Alien } from './alien/alien.model';
 
 @Component({
@@ -9,15 +11,40 @@ import { Alien } from './alien/alien.model';
 })
 export class AliensListComponent implements OnInit {
 
-  Aliens: Alien[];
-  constructor(private dataService: DataService) { }
+  alienRequests: Alien[] = [];
+
+  isOpen = false;
+
+  constructor(
+    private dataService: DataService,
+    private simulator: SimulatorService
+  ) { }
 
   ngOnInit(): void {
-    this.dataService.getAliens().subscribe(
-      aliensData => {
-        this.Aliens = aliensData;
-      }
-    )
+    this.simulator.initializeAliens();
+    this.simulator.request.subscribe(
+      data => {
+        // console.log(data);
+        this.alienRequests.push(data);
+        console.log(this.alienRequests);
+
+      })
+    // this.getAllAliens();
+    // this.availableAliens.next(this.Aliens);
   }
 
+  // getAllAliens() {
+  //   this.dataService.getAliens().subscribe((aliens)=> {
+  //     this.Aliens = aliens;
+  //   });
+  // }
+
+  toggleSimulator() {
+    this.isOpen = !this.isOpen;
+    if(this.isOpen) {
+      this.simulator.start();
+    } else {
+      this.simulator.stop();
+    }
+  }
 }

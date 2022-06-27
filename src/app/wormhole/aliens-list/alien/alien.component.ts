@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AlienComponent implements OnInit {
   panelOpenState = false;
+
   request = false;
 
   @Input() alien;
@@ -17,9 +18,7 @@ export class AlienComponent implements OnInit {
   ngOnInit(): void {
 
     if(this.alien.id == '1' || this.alien.id == '5' || this.alien.id == '7') {
-      console.log(this.alien);
       this.request = true;
     }
-    // this.alien.id;
   }
 }

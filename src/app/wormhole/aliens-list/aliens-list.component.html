@@ -1,7 +1,18 @@
 <mat-card>
-  <mat-card-title>Aliens</mat-card-title>
+  <mat-card-title>
+    <span>Alien Requests</span>
+    <button
+      class="tooltip-button"
+      matTooltip="Wormhole is: {{isOpen? 'ON' : 'OFF'}}">
+      <mat-slide-toggle
+        color="primary"
+        (click)="toggleSimulator()">
+        Wormhole
+      </mat-slide-toggle>
+    </button>
+  </mat-card-title>
     <scrollbar class="scrollbar">
-      <div *ngFor="let Alien of Aliens">
+      <div *ngFor="let Alien of alienRequests">
         <app-alien [alien]="Alien"></app-alien>
       </div>
     </scrollbar>

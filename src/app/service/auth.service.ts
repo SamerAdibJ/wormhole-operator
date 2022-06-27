@@ -68,8 +68,8 @@ export class AuthService {
 
   autoLogin() {
     const userToken: { token: string, tokenExpirationDate: string} = JSON.parse(localStorage.getItem('userToken'));
-    console.log('userToken');
-    console.log(userToken);
+    // console.log('userToken');
+    // console.log(userToken);
     if (!userToken) {
       return;
     }

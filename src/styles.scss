@@ -175,6 +175,12 @@ app-root {
       }
     }
   }
+  .tooltip-button {
+    background-color: transparent;
+    color: #1b5e20;
+    border: none;
+    font-size: 16px;
+  }
 }
 
 @import '~@angular/material/theming';
