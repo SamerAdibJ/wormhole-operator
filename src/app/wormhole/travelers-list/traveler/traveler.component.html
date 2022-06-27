@@ -1,54 +1,88 @@
 <div class="row">
   <div class="col-12">
-    <div class="card-wrapper d-flex align-items-end justify-content-end">
-      <mat-accordion class="w-50">
+    <div class="card-wrapper">
+      <mat-accordion *ngIf="request">
+
         <mat-expansion-panel>
+
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Destination: <span style="color: white;"> {{alienRequest.destination}}</span>Wh.
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-list>
+            <mat-list-item>
+              <div mat-line>Cost:</div>
+              <div mat-line>-</div>
+            </mat-list-item>
+            <mat-list-item>
+              <div mat-line>Trip duration:</div>
+              <div mat-line>
+                <span>-</span>
+                <span>
+                  <button class="tooltip-button" matTooltip="Time in Earth Seconds">
+                    ES
+                  </button>
+                </span>
+              </div>
+            </mat-list-item>
+          </mat-list>
+
+        </mat-expansion-panel>
+
+      </mat-accordion>
+
+      <div *ngIf="request" class="connection-panel">
+
+
+        <mat-icon class="tooltip-button" matTooltip="Decline" color="primary">
+          close
+        </mat-icon>
+        <mat-progress-bar mode="query" color="primary"></mat-progress-bar>
+        <mat-icon
+          class="tooltip-button"
+          matTooltip="Accept"
+          color="primary"
+          (click)="accept()">
+          arrow_forward_ios
+        </mat-icon>
+
+
+      </div>
+
+      <mat-accordion >
+
+        <mat-expansion-panel collapsedHeight="40">
+
           <mat-expansion-panel-header>
             <mat-panel-title>
               {{traveler.name | titlecase}}
             </mat-panel-title>
           </mat-expansion-panel-header>
+
           <mat-list>
+
             <mat-list-item>
               <div mat-line>ID:</div>
               <div mat-line>{{traveler.id}}</div>
             </mat-list-item>
+
             <mat-list-item>
               <div mat-line>Current Position:</div>
               <div mat-line>{{traveler.currentPosition}}</div>
             </mat-list-item>
+
             <mat-list-item>
               <div mat-line>Completed Trips:</div>
               <div mat-line>-</div>
             </mat-list-item>
+
           </mat-list>
+
         </mat-expansion-panel>
-      </mat-accordion>
-      <mat-progress-bar *ngIf="request" mode="query" color="primary" class="w-25"></mat-progress-bar>
-      <mat-accordion *ngIf="request">
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Destination: <span>145326</span> Wh.
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <mat-list>
-            <mat-list-item>
-              <div mat-line>ID:</div>
-              <div mat-line>1254</div>
-            </mat-list-item>
-            <mat-list-item>
-              <div mat-line>Destination:</div>
-              <div mat-line>35</div>
-            </mat-list-item>
-            <mat-list-item>
-              <div mat-line>Completed Trips:</div>
-              <div mat-line>4</div>
-            </mat-list-item>
-          </mat-list>
-        </mat-expansion-panel>
+
       </mat-accordion>
     </div>
   </div>
 </div>
-

@@ -22,8 +22,8 @@ export class SimulatorService {
   initialWaitingTime = 5;
 
   // The min and max waiting time before emitting the next value
-  minWaitingTime = 1;
-  maxWaitingTime = 2;
+  minWaitingTime = 5;
+  maxWaitingTime = 15;
 
   // The min and max position to emit with the value
   minPosition = 10;
