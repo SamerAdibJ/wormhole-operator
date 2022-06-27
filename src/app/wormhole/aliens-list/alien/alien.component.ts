@@ -1,4 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { AlienRequest } from 'src/app/interface/alien-request';
+import { TripService } from 'src/app/service/trip.service';
+import { Alien } from './alien.model';
 
 @Component({
   selector: 'app-alien',
@@ -13,9 +17,14 @@ export class AlienComponent implements OnInit {
   @Input() alienRequest;
 
 
-  constructor() { }
+
+  constructor(private tripService: TripService) { }
 
   ngOnInit(): void {
 
+  }
+
+  accept() {
+    this.tripService.submitRequest(this.alienRequest);
   }
 }
