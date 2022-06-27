@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { from, Observable, Subject, Subscription } from 'rxjs';
+import { AlienRequest } from 'src/app/interface/alien-request';
 import { DataService } from 'src/app/service/data.service';
 import { SimulatorService } from 'src/app/service/simulator.service';
 import { Alien } from './alien/alien.model';
@@ -11,33 +12,19 @@ import { Alien } from './alien/alien.model';
 })
 export class AliensListComponent implements OnInit {
 
-  alienRequests: Alien[] = [];
+  alienRequests: AlienRequest[] = [];
 
   isOpen = false;
 
-  constructor(
-    private dataService: DataService,
-    private simulator: SimulatorService
-  ) { }
+  constructor(private simulator: SimulatorService) { }
 
   ngOnInit(): void {
     this.simulator.initializeAliens();
     this.simulator.request.subscribe(
       data => {
-        // console.log(data);
         this.alienRequests.push(data);
-        console.log(this.alienRequests);
-
       })
-    // this.getAllAliens();
-    // this.availableAliens.next(this.Aliens);
   }
-
-  // getAllAliens() {
-  //   this.dataService.getAliens().subscribe((aliens)=> {
-  //     this.Aliens = aliens;
-  //   });
-  // }
 
   toggleSimulator() {
     this.isOpen = !this.isOpen;

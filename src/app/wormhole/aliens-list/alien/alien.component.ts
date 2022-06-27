@@ -7,18 +7,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AlienComponent implements OnInit {
   panelOpenState = false;
-
+  alienIconUrl = '../../../../assets/icons/alien.svg';
   request = false;
 
-  @Input() alien;
+  @Input() alienRequest;
 
 
   constructor() { }
 
   ngOnInit(): void {
 
-    if(this.alien.id == '1' || this.alien.id == '5' || this.alien.id == '7') {
-      this.request = true;
-    }
   }
 }

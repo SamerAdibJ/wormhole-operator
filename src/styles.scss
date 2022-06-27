@@ -76,6 +76,9 @@ app-root {
             background-color: rgba(0, 0, 0, 0.6) !important;
             border: 1px solid #1b5e20;
             border-radius: 4px;
+            &.align-items-right {
+              // width: 50%;
+            }
 
             mat-expansion-panel {
               background-color: transparent;
@@ -116,6 +119,9 @@ app-root {
               background-color: #1b5e20 !important;
               mat-panel-title {
                 color: white;
+                .alien-icon {
+                  fill: white;
+                }
               }
               .mat-expansion-indicator::after {
                 color: white;
@@ -143,7 +149,7 @@ app-root {
             border-radius: 50%;
           }
           .mat-progress-bar-background {
-            fill: black
+            fill: transparent;
           }
           .connection-panel {
             width: 25%;

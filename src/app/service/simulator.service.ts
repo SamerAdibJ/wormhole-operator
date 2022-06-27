@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, from, interval, map, Observable, Subject, switchMap, take, takeWhile, tap } from 'rxjs';
-import { Alien } from '../wormhole/aliens-list/alien/alien.model';
-import { DataService } from './data.service';
 
-export interface AlienRequest {
-  alienId: string;
-  destination: number;
-}
+import {
+  BehaviorSubject,
+  interval,
+  Subject,
+  Subscription,
+  switchMap,
+  tap } from 'rxjs';
+
+import { AlienRequest } from '../interface/alien-request';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SimulatorService {
-
-  timer: Observable<number>;
 
   constructor(private dataService: DataService) { }
 
@@ -21,8 +22,8 @@ export class SimulatorService {
   initialWaitingTime = 5;
 
   // The min and max waiting time before emitting the next value
-  minWaitingTime = 5;
-  maxWaitingTime = 15;
+  minWaitingTime = 1;
+  maxWaitingTime = 2;
 
   // The min and max position to emit with the value
   minPosition = 10;
@@ -34,11 +35,9 @@ export class SimulatorService {
   // The avaialble aliens for the simulator
   availableAliens= [];
 
-  // Aliens initial value
-  aliens: Alien[];
-
   // Emits an alien request within an interval of time
   private simulator = new BehaviorSubject<number>(0);
+  timer: Subscription;
 
   initializeAliens() {
     // Initialize the array of alien for the simulator
@@ -50,6 +49,7 @@ export class SimulatorService {
   }
 
   start() {
+    this.timer =
     this.simulator
     .pipe(
       switchMap( (waitingTime) => interval( waitingTime ) ),
@@ -59,7 +59,7 @@ export class SimulatorService {
           let index = this.generateNumber(0, this.availableAliens.length);
 
           this.alienRequest = {
-            alienId: this.availableAliens[index]['id'],
+            alien: this.availableAliens[index],
             destination: destination
           }
 
@@ -74,16 +74,15 @@ export class SimulatorService {
           this.request.next(this.alienRequest);
 
           // Update interval with a new random value(waiting time for the next emit to happen)
-          this.simulator.next( this.getRandomWaitingTime() );
+          this.simulator.next(this.getRandomWaitingTime());
         }
       })
-    )
-    .subscribe();
+    ).subscribe();
   };
 
   stop() {
     //stop the simulator
-    console.log('stop');
+    this.timer.unsubscribe();
   }
 
   private generateNumber(min, max) {

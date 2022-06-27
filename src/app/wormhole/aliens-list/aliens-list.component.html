@@ -12,8 +12,8 @@
     </button>
   </mat-card-title>
     <scrollbar class="scrollbar">
-      <div *ngFor="let Alien of alienRequests">
-        <app-alien [alien]="Alien"></app-alien>
+      <div *ngFor="let request of alienRequests">
+        <app-alien [alienRequest]="request"></app-alien>
       </div>
     </scrollbar>
 </mat-card>
