@@ -9,6 +9,7 @@ import {
   tap } from 'rxjs';
 
 import { AlienRequest } from '../interface/alien-request';
+import { Alien } from '../wormhole/aliens-list/alien/alien.model';
 import { DataService } from './data.service';
 
 @Injectable({
@@ -18,10 +19,10 @@ export class SimulatorService {
 
   constructor(private dataService: DataService) { }
 
-  //The waiting time befor the sumulator starts(initial value of the behaviour subject)
+  //The waiting time in seconds before the sumulator starts(initial value of the behaviour subject)
   initialWaitingTime = 5;
 
-  // The min and max waiting time before emitting the next value
+  // The min and max waiting time in seconds before emitting the next value
   minWaitingTime = 5;
   maxWaitingTime = 15;
 
@@ -36,7 +37,7 @@ export class SimulatorService {
   availableAliens= [];
 
   // Emits an alien request within an interval of time
-  private simulator = new BehaviorSubject<number>(0);
+  private simulator = new BehaviorSubject<number>(this.initialWaitingTime);
   timer: Subscription;
 
   initializeAliens() {
@@ -55,22 +56,24 @@ export class SimulatorService {
       switchMap( (waitingTime) => interval( waitingTime ) ),
       tap(() => {
         if(this.availableAliens.length) {
-          let destination = this.getRandomDestination();
+          //Generating a random alien and destination position
           let index = this.generateNumber(0, this.availableAliens.length);
+          let destination = this.getRandomDestination();
 
+          //Creating the alien request
           this.alienRequest = {
             alien: this.availableAliens[index],
             destination: destination
           }
 
+          //Remove the alien from the array of availableAliens
           let removeId = this.availableAliens[index]['id'];
-
           this.availableAliens = this.availableAliens.filter(
             alien => {
               return alien['id'] != removeId;
             }
           )
-
+          //Emit the request
           this.request.next(this.alienRequest);
 
           // Update interval with a new random value(waiting time for the next emit to happen)
@@ -84,6 +87,13 @@ export class SimulatorService {
     //stop the simulator
     this.timer.unsubscribe();
   }
+
+  reloadAlien(alien: Alien) {
+    this.availableAliens.push(alien);
+    console.log(this.availableAliens);
+  }
+
+
 
   private generateNumber(min, max) {
     // returns a random integer between min and max

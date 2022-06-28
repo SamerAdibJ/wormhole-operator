@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlienRequest } from 'src/app/interface/alien-request';
 import { DataService } from 'src/app/service/data.service';
 import { TripService } from 'src/app/service/trip.service';
@@ -12,9 +12,7 @@ import { Traveler } from './traveler/traveler.model';
 export class TravelersListComponent implements OnInit {
 
   Travelers: Traveler[];
-
   alienRequest: AlienRequest;
-  request = false;
 
   constructor(private dataService: DataService, private tripservice: TripService) { }
 
@@ -23,8 +21,6 @@ export class TravelersListComponent implements OnInit {
       travelersData => {
         this.Travelers = travelersData;
     })
-
-
   }
 
 }

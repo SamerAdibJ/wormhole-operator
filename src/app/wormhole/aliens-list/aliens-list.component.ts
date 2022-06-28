@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { from, Observable, Subject, Subscription } from 'rxjs';
 import { AlienRequest } from 'src/app/interface/alien-request';
-import { DataService } from 'src/app/service/data.service';
 import { SimulatorService } from 'src/app/service/simulator.service';
-import { Alien } from './alien/alien.model';
+import { TripService } from 'src/app/service/trip.service';
 
 @Component({
   selector: 'app-aliens-list',
@@ -16,7 +14,10 @@ export class AliensListComponent implements OnInit {
 
   isOpen = false;
 
-  constructor(private simulator: SimulatorService) { }
+  constructor(
+    private simulator: SimulatorService,
+    private tripService: TripService
+  ) { }
 
   ngOnInit(): void {
     this.simulator.initializeAliens();
@@ -24,6 +25,17 @@ export class AliensListComponent implements OnInit {
       data => {
         this.alienRequests.push(data);
       })
+
+    this.tripService.removeRequest().subscribe(request=> {
+      //remove the request from the alien list
+      this.alienRequests = this.alienRequests.filter(
+        alienRequest=> {
+          return alienRequest.alien['id'] != request.alien['id'];
+        });
+
+      //Add the alien again to the simulator waiting list
+      this.simulator.reloadAlien(request.alien);
+    })
   }
 
   toggleSimulator() {

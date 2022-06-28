@@ -7,25 +7,29 @@
 
           <mat-expansion-panel-header>
             <mat-panel-title>
-              Destination: <span style="color: white;"> {{alienRequest.destination}}</span>Wh.
+              <div class="d-flex align-items-center justify-content-between w-100">
+                <div>Trip Details</div>
+                <div style="color: #76b484; font-weight: bold;"> {{tripDetails.cost}} A</div>
+              </div>
             </mat-panel-title>
           </mat-expansion-panel-header>
 
           <mat-list>
             <mat-list-item>
               <div mat-line>Cost:</div>
-              <div mat-line>-</div>
+              <div mat-line>{{tripDetails.cost}} A</div>
             </mat-list-item>
             <mat-list-item>
-              <div mat-line>Trip duration:</div>
-              <div mat-line>
-                <span>-</span>
-                <span>
-                  <button class="tooltip-button" matTooltip="Time in Earth Seconds">
-                    ES
-                  </button>
-                </span>
-              </div>
+              <div mat-line>Waiting Time:</div>
+              <div mat-line>{{tripDetails.waitingTime}} Es.</div>
+            </mat-list-item>
+            <mat-list-item>
+              <div mat-line>Total duration:</div>
+              <div mat-line>{{tripDetails.totalDuration}} Es.</div>
+            </mat-list-item>
+            <mat-list-item>
+              <div mat-line>Total distance:</div>
+              <div mat-line>{{tripDetails.totalDistance}} Wh.</div>
             </mat-list-item>
           </mat-list>
 
@@ -70,12 +74,12 @@
 
             <mat-list-item>
               <div mat-line>Current Position:</div>
-              <div mat-line>{{traveler.currentPosition}}</div>
+              <div mat-line>{{traveler.currentPosition}}<a> Wh.</a></div>
             </mat-list-item>
 
             <mat-list-item>
               <div mat-line>Completed Trips:</div>
-              <div mat-line>-</div>
+              <div mat-line>0</div>
             </mat-list-item>
 
           </mat-list>

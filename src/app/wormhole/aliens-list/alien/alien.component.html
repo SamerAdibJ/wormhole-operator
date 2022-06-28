@@ -32,12 +32,12 @@
 
             <mat-list-item>
               <div mat-line>Current Position:</div>
-              <div mat-line>{{alienRequest.alien.currentPosition}}</div>
+              <div mat-line>{{alienRequest.alien.currentPosition}}<a> Wh.</a></div>
             </mat-list-item>
 
             <mat-list-item>
               <div mat-line>Completed Trips:</div>
-              <div mat-line>-</div>
+              <div mat-line>0</div>
             </mat-list-item>
 
           </mat-list>
@@ -48,7 +48,11 @@
       <div class="connection-panel">
 
 
-        <mat-icon class="tooltip-button" matTooltip="Decline" color="primary">
+        <mat-icon
+          class="tooltip-button"
+          matTooltip="Decline"
+          color="primary"
+          (click)="onDecline()">
           close
         </mat-icon>
         <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
@@ -56,7 +60,7 @@
           class="tooltip-button"
           matTooltip="Accept"
           color="primary"
-          (click)="accept()">
+          (click)="onAccept()">
           arrow_forward_ios
         </mat-icon>
 
@@ -68,16 +72,32 @@
 
           <mat-expansion-panel-header>
             <mat-panel-title>
-              Destination: <span style="color: white;"> {{alienRequest.destination}}</span>Wh.
+              <!-- Destination: <span style="color: white;"> {{alienRequest.destination}}</span>Wh. -->
+              <div class="d-flex align-items-center justify-content-between w-100">
+                <div>Request Details</div>
+                <div style="color: #76b484; font-weight: bold;">{{alienRequest.destination}} <a>Wh.</a></div>
+              </div>
             </mat-panel-title>
           </mat-expansion-panel-header>
 
           <mat-list>
             <mat-list-item>
-              <div mat-line>Cost:</div>
-              <div mat-line>-</div>
+              <div mat-line>Alien Name:</div>
+              <div mat-line>{{alienRequest.alien.name | titlecase}}</div>
             </mat-list-item>
             <mat-list-item>
+              <div mat-line>Alien ID:</div>
+              <div mat-line>{{alienRequest.alien.id}}</div>
+            </mat-list-item>
+            <mat-list-item>
+              <div mat-line>Alien Location:</div>
+              <div mat-line>{{alienRequest.alien.currentPosition}}<a> Wh.</a></div>
+            </mat-list-item>
+            <mat-list-item>
+              <div mat-line>Destination:</div>
+              <div mat-line>{{alienRequest.destination}}<a> Wh.</a></div>
+            </mat-list-item>
+            <!-- <mat-list-item>
               <div mat-line>Trip duration:</div>
               <div mat-line>
                 <span>-</span>
@@ -87,7 +107,7 @@
                   </button>
                 </span>
               </div>
-            </mat-list-item>
+            </mat-list-item> -->
           </mat-list>
 
         </mat-expansion-panel>

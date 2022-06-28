@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { AlienRequest } from 'src/app/interface/alien-request';
+import { SimulatorService } from 'src/app/service/simulator.service';
 import { TripService } from 'src/app/service/trip.service';
 import { Alien } from './alien.model';
 
@@ -16,15 +17,21 @@ export class AlienComponent implements OnInit {
 
   @Input() alienRequest;
 
-
-
-  constructor(private tripService: TripService) { }
+  constructor(
+    private tripService: TripService,
+    private simulator: SimulatorService
+    ) { }
 
   ngOnInit(): void {
 
   }
 
-  accept() {
+
+  onAccept() {
     this.tripService.submitRequest(this.alienRequest);
+  }
+
+  onDecline() {
+    this.tripService.cancelRequest(this.alienRequest);
   }
 }
