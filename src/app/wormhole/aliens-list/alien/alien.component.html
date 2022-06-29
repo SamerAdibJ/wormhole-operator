@@ -49,6 +49,7 @@
 
 
         <mat-icon
+          *ngIf="controls"
           class="tooltip-button"
           matTooltip="Decline"
           color="primary"
@@ -57,6 +58,7 @@
         </mat-icon>
         <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
         <mat-icon
+          *ngIf="controls"
           class="tooltip-button"
           matTooltip="Accept"
           color="primary"
@@ -97,17 +99,6 @@
               <div mat-line>Destination:</div>
               <div mat-line>{{alienRequest.destination}}<a> Wh.</a></div>
             </mat-list-item>
-            <!-- <mat-list-item>
-              <div mat-line>Trip duration:</div>
-              <div mat-line>
-                <span>-</span>
-                <span>
-                  <button class="tooltip-button" matTooltip="Time in Earth Seconds">
-                    ES
-                  </button>
-                </span>
-              </div>
-            </mat-list-item> -->
           </mat-list>
 
         </mat-expansion-panel>

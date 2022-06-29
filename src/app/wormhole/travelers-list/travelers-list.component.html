@@ -1,8 +1,9 @@
-<mat-card>
-  <mat-card-title>Travelers</mat-card-title>
+<mat-card [ngStyle]="{'border-color':alienRequest ? 'white':''}">
+  <mat-card-title
+  [ngStyle]="alienRequest ? {color: 'white', borderColor: 'white'} : {}">Travelers</mat-card-title>
     <scrollbar class="scrollbar">
       <div *ngFor="let Traveler of Travelers">
-        <app-traveler [traveler]="Traveler"></app-traveler>
+        <app-traveler [traveler]="Traveler" (onAssign)="onAssigned($event)" [alienRequest]="alienRequest"></app-traveler>
       </div>
     </scrollbar>
 </mat-card>

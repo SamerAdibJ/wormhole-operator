@@ -11,7 +11,7 @@ import { TripService } from 'src/app/service/trip.service';
 export class AliensListComponent implements OnInit {
 
   alienRequests: AlienRequest[] = [];
-
+  selectedRequestId;
   isOpen = false;
 
   constructor(
@@ -24,18 +24,32 @@ export class AliensListComponent implements OnInit {
     this.simulator.request.subscribe(
       data => {
         this.alienRequests.push(data);
-      })
+      }
+    );
 
-    this.tripService.removeRequest().subscribe(request=> {
-      //remove the request from the alien list
-      this.alienRequests = this.alienRequests.filter(
-        alienRequest=> {
-          return alienRequest.alien['id'] != request.alien['id'];
-        });
+    this.tripService.removeRequest().subscribe(
+      request=> {
+        //remove the request from the alien list
+        this.alienRequests = this.alienRequests.filter(
+          alienRequest=> {
+            return alienRequest.alien['id'] != request.alien['id'];
+          }
+        );
 
-      //Add the alien again to the simulator waiting list
-      this.simulator.reloadAlien(request.alien);
-    })
+        //Add the alien again to the simulator waiting list
+        this.simulator.reloadAlien(request.alien);
+      }
+    )
+
+    this.simulator.removeRequest.subscribe(
+      request =>{
+        this.alienRequests = this.alienRequests.filter(
+          alienRequest=> {
+            return alienRequest.alien['id'] != request.alien['id'];
+          }
+        );
+      }
+    )
   }
 
   toggleSimulator() {
@@ -45,5 +59,9 @@ export class AliensListComponent implements OnInit {
     } else {
       this.simulator.stop();
     }
+  }
+
+  selected(id) {
+    this.selectedRequestId = id;
   }
 }

@@ -1,9 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
-import { AlienRequest } from 'src/app/interface/alien-request';
 import { SimulatorService } from 'src/app/service/simulator.service';
 import { TripService } from 'src/app/service/trip.service';
-import { Alien } from './alien.model';
 
 @Component({
   selector: 'app-alien',
@@ -14,9 +12,10 @@ export class AlienComponent implements OnInit {
   panelOpenState = false;
   alienIconUrl = '../../../../assets/icons/alien.svg';
   request = false;
+  @Input() controls = true;
 
   @Input() alienRequest;
-
+  @Output() isSelected = new Subject<boolean>();
   constructor(
     private tripService: TripService,
     private simulator: SimulatorService
@@ -29,9 +28,11 @@ export class AlienComponent implements OnInit {
 
   onAccept() {
     this.tripService.submitRequest(this.alienRequest);
+    this.isSelected.next(this.alienRequest.alien.id);
   }
 
   onDecline() {
     this.tripService.cancelRequest(this.alienRequest);
+    // this.isSelected.next(false);
   }
 }

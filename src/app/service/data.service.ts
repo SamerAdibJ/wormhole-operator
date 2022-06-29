@@ -21,4 +21,5 @@ export class DataService {
   getTravelers(): Observable<Traveler[]> {
     return this.http.get<Traveler[]>(this.TravelersUrl);
   }
+
 }

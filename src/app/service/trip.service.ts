@@ -11,7 +11,7 @@ export class TripService {
 
   acceptRequest = new Subject<AlienRequest>()
   declineRequest = new Subject<AlienRequest>()
-
+  highlightedRequest = new Subject<AlienRequest>()
   request: Subscription
 
   constructor() { }
@@ -34,6 +34,10 @@ export class TripService {
 
   getTripDetails(alienRequest: AlienRequest, traveler: Traveler): TripDetails {
     return this.calculateTripDetails(alienRequest, traveler);
+  }
+
+  highlightRequest(alienRequest: AlienRequest): void {
+    this.highlightedRequest.next(alienRequest);
   }
 
   private calculateTripDetails(request, traveler): TripDetails {

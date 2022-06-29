@@ -12,8 +12,13 @@
     </button>
   </mat-card-title>
     <scrollbar class="scrollbar">
-      <div *ngFor="let request of alienRequests">
-        <app-alien [alienRequest]="request"></app-alien>
+      <div *ngFor="let request of alienRequests; let i = index">
+        <app-alien
+          [alienRequest]="request"
+          [class.is-selected]="request.alien['id'] == selectedRequestId"
+          [controls]="!(request.alien['id'] == selectedRequestId)"
+          (isSelected)="selected($event)">
+        </app-alien>
       </div>
     </scrollbar>
 </mat-card>

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-12">
     <div class="card-wrapper">
-      <mat-accordion *ngIf="request">
+      <mat-accordion *ngIf="request && !onTrip && alienRequest">
 
         <mat-expansion-panel>
 
@@ -9,7 +9,8 @@
             <mat-panel-title>
               <div class="d-flex align-items-center justify-content-between w-100">
                 <div>Trip Details</div>
-                <div style="color: #76b484; font-weight: bold;"> {{tripDetails.cost}} A</div>
+                <div [ngStyle]="tripDetails.waitingTime>30? {color: 'red', borderColor: 'white'} : {color: '#76b484'}">
+                  Delay -{{tripDetails.waitingTime}} Es</div>
               </div>
             </mat-panel-title>
           </mat-expansion-panel-header>
@@ -37,31 +38,27 @@
 
       </mat-accordion>
 
-      <div *ngIf="request" class="connection-panel">
-
-
-        <mat-icon class="tooltip-button" matTooltip="Decline" color="primary">
-          close
-        </mat-icon>
-        <mat-progress-bar mode="query" color="primary"></mat-progress-bar>
+      <div *ngIf="request && !onTrip && alienRequest" class="connection-panel">
         <mat-icon
           class="tooltip-button"
-          matTooltip="Accept"
-          color="primary"
-          (click)="accept()">
-          arrow_forward_ios
-        </mat-icon>
-
-
+          matTooltip="Assign to {{traveler.name | titlecase}}"
+          (click)="accept()">fast_rewind</mat-icon>
+        <mat-progress-bar mode="query" color="primary"></mat-progress-bar>
       </div>
 
-      <mat-accordion >
+      <mat-accordion [ngStyle]="onTrip? {color: 'white', borderColor: 'white', backgroundColor: 'green'} : {}">
 
         <mat-expansion-panel collapsedHeight="40">
 
           <mat-expansion-panel-header>
-            <mat-panel-title>
+            <mat-panel-title [ngStyle]="{'color':onTrip ? 'white':''}">
               {{traveler.name | titlecase}}
+            </mat-panel-title>
+            <mat-panel-title *ngIf="onTrip" [ngStyle]="{'color':onTrip ? '#76b484':''}">
+              <span>Connecting alien in </span>
+              <span [ngStyle]="{'font-weight': true ?'bold ':''}">
+                 ... {{timeLeft}} Es
+              </span>
             </mat-panel-title>
           </mat-expansion-panel-header>
 

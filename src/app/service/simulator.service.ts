@@ -23,28 +23,36 @@ export class SimulatorService {
   initialWaitingTime = 5;
 
   // The min and max waiting time in seconds before emitting the next value
-  minWaitingTime = 5;
-  maxWaitingTime = 15;
+  minWaitingTime = 1;
+  maxWaitingTime = 2;
 
   // The min and max position to emit with the value
   minPosition = 10;
   maxPosition = 100;
 
   alienRequest: AlienRequest;
+
   request = new Subject<AlienRequest>();
 
+  alienToRemove = new Subscription();
+
+  allAliens = [];
   // The avaialble aliens for the simulator
   availableAliens= [];
 
   // Emits an alien request within an interval of time
   private simulator = new BehaviorSubject<number>(this.initialWaitingTime);
+
+  removeRequest = new Subject<AlienRequest>();
+
   timer: Subscription;
 
   initializeAliens() {
     // Initialize the array of alien for the simulator
     this.dataService.getAliens().subscribe(
       aliens => {
-        this.availableAliens = aliens;
+        this.allAliens = aliens;
+        this.availableAliens = this.allAliens.slice();
       }
     );
   }
@@ -93,7 +101,19 @@ export class SimulatorService {
     console.log(this.availableAliens);
   }
 
+  removeAlien(removeAlien: AlienRequest) {
+    this.availableAliens.filter(alien =>{
+      alien != removeAlien
+    })
+    return this.removeRequest.next(removeAlien)
+  }
 
+  getAlienById(id: string): Alien {
+    return this.allAliens.filter(
+      alien => {
+        this.allAliens == alien.id;
+      })
+  }
 
   private generateNumber(min, max) {
     // returns a random integer between min and max
