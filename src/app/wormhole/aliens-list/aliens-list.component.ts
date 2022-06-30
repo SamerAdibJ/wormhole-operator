@@ -27,22 +27,24 @@ export class AliensListComponent implements OnInit {
       }
     );
 
-    this.tripService.removeRequest().subscribe(
-      request=> {
-        //remove the request from the alien list
+    this.tripService.declineRequest.subscribe(
+      declinedRequest => {
         this.alienRequests = this.alienRequests.filter(
-          alienRequest=> {
-            return alienRequest.alien['id'] != request.alien['id'];
+          request => {
+            return request != declinedRequest;
           }
-        );
+        )
 
         //Add the alien again to the simulator waiting list
-        this.simulator.reloadAlien(request.alien);
-      }
-    )
+        this.simulator.reloadAlien(declinedRequest.alien);
+      })
 
     this.simulator.removeRequest.subscribe(
       request =>{
+        //unselect the approved alien request
+        this.selectedRequestId = null;
+
+        //Remove the request from the simulator waiting list
         this.alienRequests = this.alienRequests.filter(
           alienRequest=> {
             return alienRequest.alien['id'] != request.alien['id'];
@@ -64,4 +66,5 @@ export class AliensListComponent implements OnInit {
   selected(id) {
     this.selectedRequestId = id;
   }
+
 }

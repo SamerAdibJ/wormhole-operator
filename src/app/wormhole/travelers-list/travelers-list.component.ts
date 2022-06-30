@@ -33,6 +33,7 @@ export class TravelersListComponent implements OnInit {
         this.alienRequest = alienRequest;
       }
     );
+
   }
 
   onAssigned(isAssigned: boolean) {

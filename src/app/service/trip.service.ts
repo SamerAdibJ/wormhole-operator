@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { AlienRequest } from '../interface/alien-request';
+import { Trip } from '../interface/trip';
 import { TripDetails } from '../interface/trip-details';
 import { Traveler } from '../wormhole/travelers-list/traveler/traveler.model';
 
@@ -12,6 +13,10 @@ export class TripService {
   acceptRequest = new Subject<AlienRequest>()
   declineRequest = new Subject<AlienRequest>()
   highlightedRequest = new Subject<AlienRequest>()
+
+  trip = new Subject<Trip>()
+  endedTrip = new Subject<Trip>()
+
   request: Subscription
 
   constructor() { }
@@ -28,10 +33,6 @@ export class TripService {
     return this.declineRequest.next(request);
   }
 
-  removeRequest() {
-    return this.declineRequest;
-  }
-
   getTripDetails(alienRequest: AlienRequest, traveler: Traveler): TripDetails {
     return this.calculateTripDetails(alienRequest, traveler);
   }
@@ -40,15 +41,24 @@ export class TripService {
     this.highlightedRequest.next(alienRequest);
   }
 
+  startTrip(trip: Trip) {
+    return this.trip.next(trip);
+  }
+
+  endTrip(trip: Trip) {
+    return this.endedTrip.next(trip);
+  }
+
+
   private calculateTripDetails(request, traveler): TripDetails {
     let alienPosition = request.alien.currentPosition;
     let travelerPosition = traveler.currentPosition;
     let destination = request.destination;
     return {
       alienID: request.alien.id,
-      cost: this.calculateCost(alienPosition, travelerPosition),
       waitingTime: this.calculateWaitingTime(alienPosition, travelerPosition),
-      totalDuration: this.calculateTotalDuration(alienPosition, travelerPosition, destination),
+      destination: destination,
+      duration: this.calculateWaitingTime(alienPosition, destination),
       totalDistance: this.calculateTotalDistance(alienPosition, travelerPosition, destination)
     }
   }

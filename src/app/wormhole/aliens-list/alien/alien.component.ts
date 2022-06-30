@@ -15,7 +15,7 @@ export class AlienComponent implements OnInit {
   @Input() controls = true;
 
   @Input() alienRequest;
-  @Output() isSelected = new Subject<boolean>();
+  @Output() isSelected = new Subject<number>();
   constructor(
     private tripService: TripService,
     private simulator: SimulatorService

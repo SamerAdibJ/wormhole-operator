@@ -17,16 +17,12 @@
 
           <mat-list>
             <mat-list-item>
-              <div mat-line>Cost:</div>
-              <div mat-line>{{tripDetails.cost}} A</div>
-            </mat-list-item>
-            <mat-list-item>
               <div mat-line>Waiting Time:</div>
               <div mat-line>{{tripDetails.waitingTime}} Es.</div>
             </mat-list-item>
             <mat-list-item>
-              <div mat-line>Total duration:</div>
-              <div mat-line>{{tripDetails.totalDuration}} Es.</div>
+              <div mat-line>Trip Duration:</div>
+              <div mat-line>{{tripDetails.duration}} Es.</div>
             </mat-list-item>
             <mat-list-item>
               <div mat-line>Total distance:</div>
@@ -55,10 +51,15 @@
               {{traveler.name | titlecase}}
             </mat-panel-title>
             <mat-panel-title *ngIf="onTrip" [ngStyle]="{'color':onTrip ? '#76b484':''}">
-              <span>Connecting alien in </span>
-              <span [ngStyle]="{'font-weight': true ?'bold ':''}">
-                 ... {{timeLeft}} Es
-              </span>
+              <div *ngIf="!hasAlien">
+                <span>Connecting {{assignedAlien['name'] | uppercase}} in</span>
+                <span [ngStyle]="{'font-weight': true ?'bold ':''}">
+                   ... {{timeLeft}} Es
+                </span>
+              </div>
+              <div *ngIf="hasAlien">
+                <span>Traveling with {{assignedAlien['name'] | uppercase}}</span>
+              </div>
             </mat-panel-title>
           </mat-expansion-panel-header>
 
@@ -70,8 +71,8 @@
             </mat-list-item>
 
             <mat-list-item>
-              <div mat-line>Current Position:</div>
-              <div mat-line>{{traveler.currentPosition}}<a> Wh.</a></div>
+              <div mat-line>Current Location:</div>
+              <div mat-line>{{!onTrip? traveler.currentPosition: 'Wormhole'}}<span *ngIf="!onTrip"> Wh.</span></div>
             </mat-list-item>
 
             <mat-list-item>

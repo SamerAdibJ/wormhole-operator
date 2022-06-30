@@ -23,8 +23,8 @@ export class SimulatorService {
   initialWaitingTime = 5;
 
   // The min and max waiting time in seconds before emitting the next value
-  minWaitingTime = 1;
-  maxWaitingTime = 2;
+  minWaitingTime = 3;
+  maxWaitingTime = 10;
 
   // The min and max position to emit with the value
   minPosition = 10;
@@ -114,6 +114,7 @@ export class SimulatorService {
         this.allAliens == alien.id;
       })
   }
+
 
   private generateNumber(min, max) {
     // returns a random integer between min and max

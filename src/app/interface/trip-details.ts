@@ -1,7 +1,7 @@
 export interface TripDetails {
   alienID: string,
-  cost: number,
   waitingTime: number,
-  totalDuration: number,
+  duration: number,
+  destination: number,
   totalDistance: number
 }

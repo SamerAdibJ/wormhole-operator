@@ -1,3 +1,10 @@
 <mat-card>
-  <mat-card-title>Trips</mat-card-title>
+  <mat-card-title>
+    <span>Trips</span>
+  </mat-card-title>
+    <scrollbar class="scrollbar">
+      <div *ngFor="let trip of trips; let i = index">
+        <app-trip [trip]="trip"></app-trip>
+      </div>
+    </scrollbar>
 </mat-card>

@@ -1,5 +1,5 @@
 <div class="d-flex align-items-center justify-content-center h-100">
-  <mat-card>
+  <mat-card class="login-form">
     <mat-progress-bar *ngIf="inProgress" mode="indeterminate" class="notification"></mat-progress-bar>
     <p *ngIf="message" [style.color]="isError? 'red' : 'green' " class="notification">{{message}}</p>
     <mat-card-title class="text-center mb-4">{{ (isLoginPage?'sign in':'sign up') | titlecase }}</mat-card-title>

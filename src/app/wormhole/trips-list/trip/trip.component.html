@@ -1,1 +1,97 @@
-<p>trip works!</p>
+<div class="row">
+  <div class="col-12">
+    <div class="card-wrapper">
+      <div class="connection-panel">
+        <mat-progress-bar mode="query" color="primary"></mat-progress-bar>
+      </div>
+      <mat-accordion>
+
+        <mat-expansion-panel collapsedHeight="40">
+
+          <mat-expansion-panel-header>
+            <div class="d-flex justify-content-between w-100">
+              <mat-panel-title>
+                {{trip.traveler['name'] | titlecase}} (Traveler)
+              </mat-panel-title>
+              <mat-panel-title>
+                {{trip.alien['name'] | titlecase}} (Alien)
+              </mat-panel-title>
+            </div>
+          </mat-expansion-panel-header>
+          <div class="d-flex justify-content-between w-100">
+            <mat-list>
+
+              <mat-list-item>
+                <div mat-line>ID:</div>
+                <div mat-line>{{trip.traveler['id']}}</div>
+              </mat-list-item>
+
+              <mat-list-item>
+                <div mat-line>Name:</div>
+                <div mat-line>{{trip.traveler['name'] | titlecase}}</div>
+              </mat-list-item>
+
+              <mat-list-item>
+                <div mat-line>Current Location:</div>
+                <div mat-line>Wormhole</div>
+              </mat-list-item>
+
+            </mat-list>
+            <mat-list>
+
+              <mat-list-item>
+                <div mat-line>ID:</div>
+                <div mat-line>{{trip.alien['id']}}</div>
+              </mat-list-item>
+
+              <mat-list-item>
+                <div mat-line>Name:</div>
+                <div mat-line>{{trip.alien['name'] | titlecase}}</div>
+              </mat-list-item>
+
+              <mat-list-item>
+                <div mat-line>Current Location:</div>
+                <div mat-line>Wormhole</div>
+              </mat-list-item>
+
+            </mat-list>
+          </div>
+
+        </mat-expansion-panel>
+
+      </mat-accordion>
+      <div class="connection-panel">
+        <mat-progress-bar mode="query" color="primary"></mat-progress-bar>
+      </div>
+
+
+      <mat-accordion>
+
+        <mat-expansion-panel>
+
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span style="color: white;">Destination: {{ trip.tripDetails['destination'] }} Wh.</span>
+            </mat-panel-title>
+            <mat-panel-title>
+              <span style="color: #76b484;">Completed in: {{ timeLeft }} Es.</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-list class="w-100">
+            <mat-list-item>
+              <div mat-line>Trip Duration:</div>
+              <div mat-line>{{trip.tripDetails['duration']}} Es</div>
+            </mat-list-item>
+          </mat-list>
+
+        </mat-expansion-panel>
+
+      </mat-accordion>
+      <div class="connection-panel">
+        <mat-progress-bar mode="query" color="primary"></mat-progress-bar>
+      </div>
+    </div>
+  </div>
+</div>
+
