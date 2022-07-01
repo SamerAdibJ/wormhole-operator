@@ -1,7 +1,7 @@
 <mat-card [ngStyle]="{'border-color':alienRequest ? 'white':''}">
   <mat-card-title
     [ngStyle]="alienRequest ? {color: 'white', borderColor: 'white'} : {}">
-    <span>Travelers</span>
+    <span>{{'travelers.title' |translate | titlecase}}</span>
   </mat-card-title>
     <scrollbar class="scrollbar">
       <div *ngFor="let Traveler of Travelers">

@@ -26,10 +26,21 @@
     "title": "Alien Requests"
   },
   "common": {
-    "title": "Request Details",
+    "request": "Request Details",
+    "trip": "Trip Details",
     "name": "Alien Name",
     "id": "ID",
     "location": "Alien Location",
-    "destination": "Destination"
+    "destination": "Destination",
+    "accept": "Accept",
+    "decline":  "Decline",
+    "assign": "Assign to",
+    "waiting": "Waiting time",
+    "duration": "Trip duration",
+    "distance": "Total distance",
+    "delay": "Delay",
+    "alien": "Alien",
+    "traveler": "Traveler",
+    "completed": "Completed in"
   }
 }

@@ -205,13 +205,13 @@ app-root {
               cursor: pointer;
               text-align: center;
               color: white;
-              &[matTooltip="Accept"]{
+              &.accept{
                 bottom: -20px;
                 left: auto;
                 right: 0;
                 top: auto;
               }
-              &[matTooltip="Decline"]{
+              &.decline{
                 bottom: auto;
                 left: 0;
                 right: auto;
@@ -245,6 +245,7 @@ app-root {
     color: #1b5e20;
     border: none;
     font-size: 16px;
+
   }
 }
 

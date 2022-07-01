@@ -14,10 +14,20 @@ export class AppComponent implements OnInit{
   constructor(private auth: AuthService, private translateService: TranslateService) {}
 
   ngOnInit(): void {
+    //Check the autoLogin guard first
     this.auth.autoLogin();
 
+    //add suppoted languages
     this.translateService.addLangs(this.languages);
     this.translateService.setDefaultLang('al');
-    this.translateService.use('al');
+
+    //check local storage
+    if(localStorage.getItem('language')) {
+      let lang = localStorage.getItem('language');
+      this.translateService.use(lang);
+    }
+    else {
+      this.translateService.use('al');
+    }
   }
 }

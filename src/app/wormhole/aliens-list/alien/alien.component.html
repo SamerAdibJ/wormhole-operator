@@ -26,13 +26,13 @@
           <mat-list>
 
             <mat-list-item>
-              <div mat-line>ID:</div>
+              <div mat-line>{{'common.id' | translate}}:</div>
               <div mat-line>{{alienRequest.alien.id}}</div>
             </mat-list-item>
 
             <mat-list-item>
-              <div mat-line>Current Location:</div>
-              <div mat-line>{{alienRequest.alien.currentPosition}}<span class="tooltip-button" matTooltip="1Wh ≈ ∞LY(light year)" matTooltipClass="tooltip-red"> Wh.</span></div>
+              <div mat-line>{{'common.location' | translate}}:</div>
+              <div mat-line>{{alienRequest.alien.currentPosition}} Wh.</div>
             </mat-list-item>
 
           </mat-list>
@@ -45,8 +45,8 @@
 
         <mat-icon
           *ngIf="controls"
-          class="tooltip-button"
-          matTooltip="Decline"
+          class="tooltip-button decline"
+          matTooltip="{{'common.decline' | translate}}"
           color="primary"
           (click)="onDecline()">
           close
@@ -54,8 +54,8 @@
         <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
         <mat-icon
           *ngIf="controls"
-          class="tooltip-button"
-          matTooltip="Accept"
+          class="tooltip-button accept"
+          matTooltip="{{'common.accept' | translate}}"
           color="primary"
           (click)="onAccept()">
           arrow_forward_ios
@@ -71,27 +71,33 @@
             <mat-panel-title>
               <!-- Destination: <span style="color: white;"> {{alienRequest.destination}}</span>Wh. -->
               <div class="d-flex align-items-center justify-content-between w-100">
-                <div>Request Details</div>
-                <div style="color: #76b484; font-weight: bold;">{{alienRequest.destination}} <a>Wh.</a></div>
+                <div>{{'common.request' | translate}}</div>
+                <div style="color: #76b484; font-weight: bold;">{{alienRequest.destination}}
+                  <span
+                    class="tooltip-button desc"
+                    matTooltip="Wh:Wormhole, Alien unit of distance, IMPOSSIBLE to be understood by humans 1Wh ≈ ∞LY(light year)">
+                     Wh.
+                  </span>
+                </div>
               </div>
             </mat-panel-title>
           </mat-expansion-panel-header>
 
           <mat-list>
             <mat-list-item>
-              <div mat-line>Alien Name:</div>
+              <div mat-line>{{'common.name' | translate}}:</div>
               <div mat-line>{{alienRequest.alien.name | titlecase}}</div>
             </mat-list-item>
             <mat-list-item>
-              <div mat-line>Alien ID:</div>
+              <div mat-line>{{'common.id' | translate}}:</div>
               <div mat-line>{{alienRequest.alien.id}}</div>
             </mat-list-item>
             <mat-list-item>
-              <div mat-line>Alien Location:</div>
+              <div mat-line>{{'common.location' | translate}}:</div>
               <div mat-line>{{alienRequest.alien.currentPosition}}<a> Wh.</a></div>
             </mat-list-item>
             <mat-list-item>
-              <div mat-line>Destination:</div>
+              <div mat-line>{{'common.destination' | translate}}:</div>
               <div mat-line>{{alienRequest.destination}}<a> Wh.</a></div>
             </mat-list-item>
           </mat-list>

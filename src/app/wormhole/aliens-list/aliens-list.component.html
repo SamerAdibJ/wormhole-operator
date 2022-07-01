@@ -1,13 +1,13 @@
 <mat-card>
   <mat-card-title>
-    <span>Alien Requests</span>
+    <span>{{'aliens.title' | translate | titlecase}}</span>
     <button
       class="tooltip-button"
       matTooltip="Wormhole is: {{isOpen? 'ON' : 'OFF'}}">
       <mat-slide-toggle
         color="primary"
         (click)="toggleSimulator()">
-        Wormhole
+        {{'aliens.wormhole' | translate | titlecase}}
       </mat-slide-toggle>
     </button>
   </mat-card-title>

@@ -11,10 +11,10 @@
           <mat-expansion-panel-header>
             <div class="d-flex justify-content-between w-100">
               <mat-panel-title>
-                {{trip.traveler['name'] | titlecase}} (Traveler)
+                {{trip.traveler['name'] | titlecase}} ({{'common.traveler' | translate}})
               </mat-panel-title>
               <mat-panel-title>
-                {{trip.alien['name'] | titlecase}} (Alien)
+                {{trip.alien['name'] | titlecase}} ({{'common.alien' | translate}})
               </mat-panel-title>
             </div>
           </mat-expansion-panel-header>
@@ -22,36 +22,36 @@
             <mat-list>
 
               <mat-list-item>
-                <div mat-line>ID:</div>
+                <div mat-line>{{'common.id' | translate}}:</div>
                 <div mat-line>{{trip.traveler['id']}}</div>
               </mat-list-item>
 
               <mat-list-item>
-                <div mat-line>Name:</div>
+                <div mat-line>{{'common.name' | translate}}:</div>
                 <div mat-line>{{trip.traveler['name'] | titlecase}}</div>
               </mat-list-item>
 
               <mat-list-item>
-                <div mat-line>Current Location:</div>
-                <div mat-line>Wormhole</div>
+                <div mat-line>{{'common.location' | translate}}:</div>
+                <div mat-line>{{'aliens.wormhole' | translate}}</div>
               </mat-list-item>
 
             </mat-list>
             <mat-list>
 
               <mat-list-item>
-                <div mat-line>ID:</div>
+                <div mat-line>{{'common.id' | translate}}:</div>
                 <div mat-line>{{trip.alien['id']}}</div>
               </mat-list-item>
 
               <mat-list-item>
-                <div mat-line>Name:</div>
+                <div mat-line>{{'common.name' | translate}}:</div>
                 <div mat-line>{{trip.alien['name'] | titlecase}}</div>
               </mat-list-item>
 
               <mat-list-item>
-                <div mat-line>Current Location:</div>
-                <div mat-line>Wormhole</div>
+                <div mat-line>{{'common.location' | translate}}:</div>
+                <div mat-line>{{'aliens.wormhole' | translate}}</div>
               </mat-list-item>
 
             </mat-list>
@@ -71,16 +71,16 @@
 
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <span style="color: white;">Destination: {{ trip.tripDetails['destination'] }} Wh.</span>
+              <span style="color: white;">{{'common.destination' | translate}}: {{ trip.tripDetails['destination'] }} Wh.</span>
             </mat-panel-title>
             <mat-panel-title>
-              <span style="color: #76b484;">Completed in: {{ timeLeft }} Es.</span>
+              <span style="color: #76b484;">{{'common.completed' | translate}}: {{ timeLeft }} Es.</span>
             </mat-panel-title>
           </mat-expansion-panel-header>
 
           <mat-list class="w-100">
             <mat-list-item>
-              <div mat-line>Trip Duration:</div>
+              <div mat-line>{{'common.duration' | translate}}:</div>
               <div mat-line>{{trip.tripDetails['duration']}} Es</div>
             </mat-list-item>
           </mat-list>

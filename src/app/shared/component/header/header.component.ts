@@ -12,20 +12,30 @@ export class HeaderComponent implements OnInit {
   language = 'alien';
   isAlienLang = true;
 
+  languageToggle = new FormGroup( {
+    lang: new FormControl('')
+  });
+
   constructor(private translateService: TranslateService) { }
 
   ngOnInit(): void {
-
+    if(localStorage.getItem('language') == 'en') {
+      this.languageToggle.setValue({lang: true})
+      this.onChangeLang();
+    }
   }
 
   onChangeLang()  {
     this.isAlienLang = !this.isAlienLang;
     if(this.isAlienLang) {
       this.language = 'alien';
-      this.translateService.use('al')
+      this.translateService.use('al');
+      localStorage.setItem('language', 'al');
     } else {
       this.language = 'english'
-      this.translateService.use('en')
+      this.translateService.use('en');
+      localStorage.setItem('language', 'en');
+
     }
   }
 

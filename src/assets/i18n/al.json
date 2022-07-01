@@ -16,21 +16,32 @@
     }
   },
   "aliens": {
-    "title": "Alien Requests",
-    "wormhole": "Wormhole"
+    "title": "ỡỢợỞ óÒŐ",
+    "wormhole": "ØøǾǿᶱÖö"
   },
   "travelers": {
-    "title": "Alien Requests"
+    "title": "ƠᶱơỚớ"
   },
   "trips": {
-    "title": "Alien Requests"
+    "title": "ÓóÒòÔôò̩"
   },
   "common": {
-    "title": "Request Details",
-    "name": "Alien Name",
-    "id": "ID",
-    "location": "Alien Location",
-    "destination": "Destination"
+    "request": "ờỠỡỢợỞ ơỚớ",
+    "trip": "ȱỌọƟɵƠ ơỚớ",
+    "name": "ỜờỠỡỢ ỡỢợ",
+    "id": "ỠỢợỞ",
+    "location": "ỚớỜ ÓóÒò",
+    "destination": "øǾǿᶱÖ",
+    "accept": "ǿᶱÖö",
+    "decline":  "ȱỌọƟɵ",
+    "assign": "ôò̩ố ȫ",
+    "waiting": "ỚớỜ ÓóÒ",
+    "duration": "ọƟɵ ỜờỠỡ",
+    "distance": "ỡỢ ỡỢợ",
+    "delay": "ơỚớ",
+    "alien": "ỡỢợỞ",
+    "traveler": "ƠᶱơỚớ",
+    "completed": "Ɵɵ ỜờỠỡ"
   }
 }
 

@@ -8,24 +8,30 @@
           <mat-expansion-panel-header>
             <mat-panel-title>
               <div class="d-flex align-items-center justify-content-between w-100">
-                <div>Trip Details</div>
+                <div>{{'common.trip' | translate}}</div>
                 <div [ngStyle]="tripDetails.waitingTime>30? {color: 'red', borderColor: 'white'} : {color: '#76b484'}">
-                  Delay -{{tripDetails.waitingTime}} Es</div>
+                  {{'common.delay' | translate}} -{{tripDetails.waitingTime}}
+                  <span
+                    class="tooltip-button desc"
+                    matTooltip="Earth seconds">
+                    Es.
+                  </span>
+                </div>
               </div>
             </mat-panel-title>
           </mat-expansion-panel-header>
 
           <mat-list>
             <mat-list-item>
-              <div mat-line>Waiting Time:</div>
+              <div mat-line>{{'common.waiting' | translate}}:</div>
               <div mat-line>{{tripDetails.waitingTime}} Es.</div>
             </mat-list-item>
             <mat-list-item>
-              <div mat-line>Trip Duration:</div>
+              <div mat-line>{{'common.duration' | translate}}:</div>
               <div mat-line>{{tripDetails.duration}} Es.</div>
             </mat-list-item>
             <mat-list-item>
-              <div mat-line>Total distance:</div>
+              <div mat-line>{{'common.distance' | translate}}:</div>
               <div mat-line>{{tripDetails.totalDistance}} Wh.</div>
             </mat-list-item>
           </mat-list>
@@ -37,7 +43,7 @@
       <div *ngIf="request && !toAlien && alienRequest" class="connection-panel">
         <mat-icon
           class="tooltip-button"
-          matTooltip="Assign to {{traveler.name | titlecase}}"
+          matTooltip="{{'common.assign' |translate}} {{traveler.name | titlecase}}"
           (click)="accept()">fast_rewind</mat-icon>
         <mat-progress-bar mode="query" color="primary"></mat-progress-bar>
       </div>
@@ -66,12 +72,12 @@
           <mat-list>
 
             <mat-list-item>
-              <div mat-line>ID:</div>
+              <div mat-line>{{'common.id' | translate}}:</div>
               <div mat-line>{{traveler.id}}</div>
             </mat-list-item>
 
             <mat-list-item>
-              <div mat-line>Current Location:</div>
+              <div mat-line>{{'common.location' | translate}}:</div>
               <div mat-line>{{!toAlien? traveler.currentPosition: 'Wormhole'}}<span *ngIf="!toAlien"> Wh.</span></div>
             </mat-list-item>
 
