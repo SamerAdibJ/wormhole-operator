@@ -12,7 +12,8 @@ import { Traveler } from './traveler/traveler.model';
 })
 export class TravelersListComponent implements OnInit {
 
-  Travelers: Traveler[];
+
+  Travelers = [];
   alienRequest: AlienRequest;
 
   request = false;

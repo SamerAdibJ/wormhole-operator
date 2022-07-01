@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material/material.module';
 import { LoginComponent } from './user/login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/component/header/header.component';
 import { RouterModule } from '@angular/router';
 import { RoutingModule } from './routing/routing.module';
@@ -18,6 +18,9 @@ import { TripsListComponent } from './wormhole/trips-list/trips-list.component';
 import { TripComponent } from './wormhole/trips-list/trip/trip.component';
 import { NG_EVENT_PLUGINS } from '@tinkoff/ng-event-plugins';
 import { ScrollbarModule } from './shared/component/scrollbar/scrollbar.module';
+import { FilterPipe } from './pipes/filter.pipe';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 
 
@@ -35,7 +38,8 @@ import { ScrollbarModule } from './shared/component/scrollbar/scrollbar.module';
     TravelersListComponent,
     TravelerComponent,
     TripsListComponent,
-    TripComponent
+    TripComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,16 @@ import { ScrollbarModule } from './shared/component/scrollbar/scrollbar.module';
     HttpClientModule,
     RouterModule,
     RoutingModule,
-    ScrollbarModule
+    ScrollbarModule,
+    TranslateModule.forRoot(
+      {
+        loader: {
+          provide: TranslateLoader,
+          useFactory: (http: HttpClient) => { return new TranslateHttpLoader(http, '/assets/i18n/', '.json');},
+          deps: [HttpClient]
+        }
+      }
+    )
   ],
   providers: NG_EVENT_PLUGINS,
   bootstrap: [AppComponent]

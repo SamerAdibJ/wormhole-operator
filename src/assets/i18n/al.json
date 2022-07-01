@@ -1,0 +1,37 @@
+{
+  "header": {
+    "title": "ØøǾǿᶱÖö ȪȫÓóÒòÔôò̩ốỒ"
+  },
+  "operator": {
+    "signin": "ÒòÔôò̩",
+    "signup": "Öö Ȫȫ",
+    "register": "òÔôò̩ố ȫÓóÒ",
+    "email": {
+      "label": "ȯȰȱỌọƟɵƠ ơỚớ",
+      "placeholder": "ØøǾǿᶱÖ"
+    },
+    "password": {
+      "label": "ơỚớỜờỠỡỢợỞ",
+      "placeholder": "6 Őő, ȱỌọ*, ơ*"
+    }
+  },
+  "aliens": {
+    "title": "Alien Requests",
+    "wormhole": "Wormhole"
+  },
+  "travelers": {
+    "title": "Alien Requests"
+  },
+  "trips": {
+    "title": "Alien Requests"
+  },
+  "common": {
+    "title": "Request Details",
+    "name": "Alien Name",
+    "id": "ID",
+    "location": "Alien Location",
+    "destination": "Destination"
+  }
+}
+
+

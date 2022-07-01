@@ -1,0 +1,35 @@
+{
+  "header": {
+    "title": "Wºrmhºle ºperatºr"
+  },
+  "operator": {
+    "signin": "Sign In",
+    "signup": "Sign Up",
+    "register": "Create Account",
+    "email": {
+      "label": "Operator Email",
+      "placeholder": "alien@space.com"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "6 char, uppercase*, number*"
+    }
+  },
+  "aliens": {
+    "title": "Alien Requests",
+    "wormhole": "Wormhole"
+  },
+  "travelers": {
+    "title": "Alien Requests"
+  },
+  "trips": {
+    "title": "Alien Requests"
+  },
+  "common": {
+    "title": "Request Details",
+    "name": "Alien Name",
+    "id": "ID",
+    "location": "Alien Location",
+    "destination": "Destination"
+  }
+}

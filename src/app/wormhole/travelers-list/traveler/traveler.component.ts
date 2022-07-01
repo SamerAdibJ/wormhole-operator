@@ -15,7 +15,7 @@ import { Alien } from '../../aliens-list/alien/alien.model';
 export class TravelerComponent implements OnInit {
 
   request = false;
-  onTrip = false;
+  @Input() toAlien = false;
   hasAlien = false;
 
   waitingTime: number;
@@ -48,8 +48,9 @@ export class TravelerComponent implements OnInit {
     this.tripService.endedTrip.subscribe(
       trip => {
         if(trip.traveler == this.traveler) {
-          this.onTrip = false;
+          this.toAlien = false;
           this.traveler.currentPosition = trip.tripDetails.destination;
+          this.traveler.completedTrips = this.traveler.completedTrips + 1;
           console.log(this.traveler);
 
         }
@@ -58,7 +59,7 @@ export class TravelerComponent implements OnInit {
   }
 
   accept() {
-    this.onTrip = true;
+    this.toAlien = true;
     this.onAssign.next(false);
     this.request = false;
     this.assignedAlien = this.alienRequest.alien;

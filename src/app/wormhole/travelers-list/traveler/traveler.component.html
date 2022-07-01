@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-12">
     <div class="card-wrapper">
-      <mat-accordion *ngIf="request && !onTrip && alienRequest">
+      <mat-accordion *ngIf="request && !toAlien && alienRequest">
 
         <mat-expansion-panel>
 
@@ -34,7 +34,7 @@
 
       </mat-accordion>
 
-      <div *ngIf="request && !onTrip && alienRequest" class="connection-panel">
+      <div *ngIf="request && !toAlien && alienRequest" class="connection-panel">
         <mat-icon
           class="tooltip-button"
           matTooltip="Assign to {{traveler.name | titlecase}}"
@@ -42,15 +42,15 @@
         <mat-progress-bar mode="query" color="primary"></mat-progress-bar>
       </div>
 
-      <mat-accordion [ngStyle]="onTrip? {color: 'white', borderColor: 'white', backgroundColor: 'green'} : {}">
+      <mat-accordion [ngStyle]="toAlien? {color: 'white', borderColor: 'white', backgroundColor: 'green'} : {}">
 
         <mat-expansion-panel collapsedHeight="40">
 
           <mat-expansion-panel-header>
-            <mat-panel-title [ngStyle]="{'color':onTrip ? 'white':''}">
+            <mat-panel-title [ngStyle]="{'color':toAlien ? 'white':''}">
               {{traveler.name | titlecase}}
             </mat-panel-title>
-            <mat-panel-title *ngIf="onTrip" [ngStyle]="{'color':onTrip ? '#76b484':''}">
+            <mat-panel-title *ngIf="toAlien" [ngStyle]="{'color':toAlien ? '#76b484':''}">
               <div *ngIf="!hasAlien">
                 <span>Connecting {{assignedAlien['name'] | uppercase}} in</span>
                 <span [ngStyle]="{'font-weight': true ?'bold ':''}">
@@ -72,12 +72,7 @@
 
             <mat-list-item>
               <div mat-line>Current Location:</div>
-              <div mat-line>{{!onTrip? traveler.currentPosition: 'Wormhole'}}<span *ngIf="!onTrip"> Wh.</span></div>
-            </mat-list-item>
-
-            <mat-list-item>
-              <div mat-line>Completed Trips:</div>
-              <div mat-line>0</div>
+              <div mat-line>{{!toAlien? traveler.currentPosition: 'Wormhole'}}<span *ngIf="!toAlien"> Wh.</span></div>
             </mat-list-item>
 
           </mat-list>

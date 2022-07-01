@@ -1,1 +1,29 @@
 
+  mat-card {
+    .mat-card-title {
+      display: flex;
+      justify-content: space-between;
+      .mat-button-toggle-group {
+        border: none;
+        padding-right: 20px;
+        .mat-button-toggle {
+          background-color: rgba(0, 0, 0, 0.3);
+          margin-right: 5px;
+          &[value="available"] {
+            background-color: #1b5e20;
+            border-radius: 5px 0 0 5px ;
+          }
+          &[value="unavailable"] {
+            border: none;
+            border-radius: 0 5px 5px 0 ;
+            background-color: #76b484;
+          }
+          &.mat-button-toggle-checked {
+            border: 1px solid white;
+          }
+        }
+      }
+    }
+
+  }
+

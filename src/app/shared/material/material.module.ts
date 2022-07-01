@@ -12,6 +12,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 
 
 
@@ -29,7 +31,8 @@ import {MatListModule} from '@angular/material/list';
     MatSlideToggleModule,
     MatProgressBarModule,
     MatExpansionModule,
-    MatListModule
+    MatListModule,
+    MatButtonToggleModule
   ]
 })
 export class MaterialModule { }

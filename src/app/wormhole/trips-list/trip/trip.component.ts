@@ -27,7 +27,6 @@ export class TripComponent implements OnInit {
 
       this.simulator.reloadAlien(this.trip.alien);
 
-      // this.tripService.endTrip(this.trip);
     } else {
       this.timer = timer(0, 1000).pipe(
         scan(acc => --acc, this.trip.tripDetails['duration']),
